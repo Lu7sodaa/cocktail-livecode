@@ -1,0 +1,11 @@
+h1 Listing cocktails
+
+= render 'form', cocktail: @cocktail
+
+ul
+  - @cocktails.each do |cocktail|
+    li
+      = cocktail.name
+      = link_to 'Show', cocktail
+      = link_to 'Edit', [:edit, cocktail]
+      = link_to 'Delete', cocktail, method: :delete, data: { confirm: 'U sure?' }

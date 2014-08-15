@@ -1,0 +1,26 @@
+h1 = @cocktail.name
+
+p = @cocktail.description
+
+p
+  span AAAA
+  br
+  span BBBB
+
+h2 Ingredients
+
+= form_for @dose do |f|
+  = f.label :amount
+  = f.number_field :amount
+  = f.label :ingredient_id
+  = f.collection_select :ingredient_id, Ingredient.all, :id, :name
+  = f.hidden_field :cocktail_id, value: @cocktail.id
+  = f.submit
+
+ul
+  - @cocktail.doses.each do |dose|
+    li
+      => dose.amount
+      ' -
+      = dose.ingredient.name
+
